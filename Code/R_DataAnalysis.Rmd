@@ -34,7 +34,7 @@ library(knitr)
 ```
 
 ```{r, include=FALSE}
-data = read_xlsx("C:\\Users\\mauri\\Desktop\\Datan.xlsx")
+data = read_xlsx("C:\\Users\\Datan.xlsx")
 data = dummy_cols(data, select_columns = "Parsimony", remove_first_dummy = FALSE)
 data = data %>% 
   mutate(across(everything(), ~as.numeric(as.character(.))))
