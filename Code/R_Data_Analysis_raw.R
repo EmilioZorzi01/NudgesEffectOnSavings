@@ -1,3 +1,5 @@
+rm(list = ls())
+
 library(sandwich)
 library(corrplot)
 library(wooldridge)
@@ -109,5 +111,6 @@ stargazer(r1, r2, r3, r4, r5,
           column.labels=c("reg1","reg2","reg3","reg4","reg5"),
           type = "text"
 )
+
 
 hist(Age, probability = T, nclass = 100)
