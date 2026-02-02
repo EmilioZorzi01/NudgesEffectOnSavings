@@ -18,6 +18,8 @@ library(fastDummies)
 library(nnet)
 library(knitr)
 
+## Data extraction and description
+
 data = read_xlsx("C:\\Users\\Datan.xlsx")
 data = dummy_cols(data, select_columns = "Parsimony", remove_first_dummy = FALSE)
 data = data %>% 
@@ -37,6 +39,8 @@ data_reduced = data[, !names(data) %in% col_removed]
 correlation_matrix = round(cor(data_reduced), 2)
 
 corrplot(correlation_matrix, method = "color")
+
+## Balance test
 
 T_group = matrix(0, nrow = 0, ncol = 23);
 C_group = matrix(0, nrow = 0, ncol = 23);
@@ -85,6 +89,8 @@ for (i in 1:14)
 
 kable(print_matrix, col.names = c('Parameter', 'F-value'))
 
+## Methodology
+
 reg1 = lm(Distance ~ Treatment, data = data)
 
 reg2 = lm(Distance ~ Treatment + Gender + Age + Schooling + Job + City, data = data)
@@ -101,6 +107,8 @@ r3 = coeftest(reg3, vcov.  = vcovHC)
 r4 = coeftest(reg4, vcov.  = vcovHC)
 r5 = coeftest(reg5, vcov.  = vcovHC)
 
+## Results
+
 stargazer(r1, r2, r3, r4, r5,
           header=FALSE, title="",
           keep.stat="n",digits=4, 
@@ -111,6 +119,8 @@ stargazer(r1, r2, r3, r4, r5,
           type = "text"
 )
 
+## Discussion
 
 hist(Age, probability = T, nclass = 100)
+
 
