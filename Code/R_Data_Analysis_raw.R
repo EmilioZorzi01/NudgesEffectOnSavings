@@ -38,7 +38,6 @@ correlation_matrix = round(cor(data_reduced), 2)
 
 corrplot(correlation_matrix, method = "color")
 
-## Balance test
 T_group = matrix(0, nrow = 0, ncol = 23);
 C_group = matrix(0, nrow = 0, ncol = 23);
 
@@ -114,3 +113,4 @@ stargazer(r1, r2, r3, r4, r5,
 
 
 hist(Age, probability = T, nclass = 100)
+
